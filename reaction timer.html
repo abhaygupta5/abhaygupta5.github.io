@@ -1,0 +1,135 @@
+<html>
+    <head>
+        <title>Reaction Timer</title>
+        <style type="text/css">
+            #shape{
+                width:200px;
+                height:200px;
+                background:red;
+                display:none; /*for initial purpose*/
+                position:relative; /*for random appearance*/
+            }
+        </style>
+    </head>
+    <body bgcolor="#FAFF00">
+        <h1><u>Reaction time Tester</u></h1>
+        <p><b>Your Time:<span id="timeTaken"></span></b></p>
+        <input type="button" id="end" value="End">
+        <p id="displayScore">Your Score<br></p>
+        <div id="shape"></div>
+        
+        <script type="text/javascript">
+            var t=0;
+            function MaxInArray(total_array){
+                    
+                    var max=0;
+                    for(var i=0;i<total_array.length;i++){
+                        if(total_array[i]>max){
+                            max=total_array[i];}
+                        
+                    }
+                    return max;
+                }
+            function MinInArray(total_array){
+                    var min=10;
+                    
+                    for(var i=0;i<total_array.length;i++){
+                        
+                        if(total_array[i]<min){
+                            min=total_array[i];}
+                    }
+                return min;
+            }
+                
+            
+            var start = new Date().getTime();
+            var Score = new Array(); //for storing scores
+            
+            function getRandomColor(){
+                var letters = '0123456789ABCDEF'.split('');
+                var color = '#';
+                for (var i=0; i<6;i++){
+                    color+= letters[Math.floor(Math.random()*16)];
+                }
+                return color;
+            }
+            
+            function makeShapeAppear(){
+                
+                var top = Math.random()*300 + 50;
+                var left = Math.random()*600;
+                var width = Math.random()*150 + 50;
+                var height = width;
+                                
+                if(Math.random() > 0.5){
+                    document.getElementById("shape").style.borderRadius = "50%";
+                }
+                
+                document.getElementById("shape").style.top = top + "px";
+                document.getElementById("shape").style.left = left + "px";
+                document.getElementById("shape").style.width = width + "px";
+                document.getElementById("shape").style.height = height + "px";
+                document.getElementById("shape").style.background = getRandomColor();
+                
+                document.getElementById("shape").style.display = "block"; // to make appear
+                
+                start = new Date().getTime();
+            }
+            
+            
+            function appearAfterDelay(){
+                setTimeout(makeShapeAppear,Math.random()*2000); //it will run function between 0 to 2 seconds
+            }
+            
+            
+            appearAfterDelay();
+            
+            
+            document.getElementById("shape").onclick = function(){
+                var stop = new Date().getTime();
+                document.getElementById("shape").style.display = "none";
+                var timeTaken = (stop-start)/1000; //to make it in seconds as it is in milliseconds
+                Score.push(timeTaken);
+                document.getElementById("timeTaken").innerHTML = timeTaken + "s";
+                t++;
+                if(t<10)
+                appearAfterDelay();
+                else{
+                    
+                    document.getElementById("shape").style.display = "none";
+                var total=0;
+                var text="";
+                for(var i=0;i<Score.length;i++){
+                    text+= Score[i]+"s<br />";
+                    total+=Score[i];
+                }
+                
+                
+                text+="<font size='10px'><b>Average Score: "+(total/Score.length)+"s" +"<br>\nMinimum Time: "+MinInArray(Score)+"s<br>\nMaximum Time: "+MaxInArray(Score)+"s<br></b></font>";
+                document.getElementById("displayScore").innerHTML += text;
+                alert("Your avg. reaction time is "+(total/Score.length)+"s\nYour lowest time is "+MinInArray(Score)+"s\nYour Highest time is "+MaxInArray(Score));
+                    
+                }
+            }
+            
+            document.getElementById("end").onclick = function(){
+                document.getElementById("shape").style.display = "none";
+                var total=0;
+                var text="";
+                for(var i=0;i<Score.length;i++){
+                    text+= Score[i]+"s<br />";
+                    total+=Score[i];
+                }
+                
+                
+                text+="<font size='10px'><b>Average Score: "+(total/Score.length)+"s" +"<br>\nMinimum Time: "+MinInArray(Score)+"s<br>\nMaximum Time: "+MaxInArray(Score)+"s<br></b></font>";
+                document.getElementById("displayScore").innerHTML += text;
+                alert("Your avg. reaction time is "+(total/Score.length)+"s\nYour lowest time is "+MinInArray(Score)+"s\nYour Highest time is "+MaxInArray(Score));
+            }
+            
+        </script>
+    
+    </body>
+    
+
+</html>

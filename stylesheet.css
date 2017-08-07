@@ -1,0 +1,68 @@
+body{
+    margin:0 200;
+    
+}
+#top-bar{
+    background:skyblue;
+    height:150;
+    width:100%;
+    
+    
+}
+
+#quotation-bar{
+    background:grey;
+    height:180;
+    width:100%;
+    color:white;
+    text-align:center;
+    padding-top:10;
+    margin-top:0;
+    
+}
+
+.content{
+    background:rgb(216,224,201);
+    width:63%;
+    height:280;
+    position:relative;
+    float:right;
+    padding:0 6%;
+    
+}
+
+.top-bar-menu{
+    float:left;
+    font-weight: bold;
+    color:black;
+    font-size:20;
+    padding:60px 15px 0 15px;
+    height:90;
+    
+}
+#blank{
+    width:212;
+    float:left;
+    padding:50px 15px 0 15px;
+    height:100;
+}
+
+.top-bar-menu a{
+    text-decoration: none;
+    color:black;
+    
+}
+
+.top-bar-menu:hover{
+   background:white;
+    
+}
+
+tr, td{
+    padding:10px;
+}
+
+.list-class{
+    font-size:25px;
+    
+}
