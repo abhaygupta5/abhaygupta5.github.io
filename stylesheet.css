@@ -1,4 +1,9 @@
 body{
+    background-image:url("background.jpg");
+    opacity:0.7;
+}
+
+#body{
     margin:0 200;
     
 }
